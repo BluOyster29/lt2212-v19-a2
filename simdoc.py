@@ -26,7 +26,7 @@ def split_data(nparray):
             crude_matrix.append(i)
 
     return grain_matrix, crude_matrix
-
+'''
 def cos_sametopic(splat_data):
     cosim_list = []
     for i in splat_data:
@@ -37,85 +37,36 @@ def cos_sametopic(splat_data):
             cosim_list.append(cos_sim)
     
     return sum(cosim_list) / len(cosim_list) * 100
+'''
+def cos_sametopic(matrix):
     
-def cos_different(grain_matrix, crude_matrix, average_file):
-    counter = 0 
-    cosim_list = []
-    for i in grain_matrix:
-        for i in crude_matrix:
-            if all(v == 0 for v in [num for num in i[1:]]):
-                continue
-            else:
-                cos_sim = dot(grain_matrix[counter][1:], i[1:])/(norm(grain_matrix[counter][1:])*norm(i[1:]))
-                cosim_list.append(cos_sim)
+    vector1 = [i[1:] for i in matrix]
+    return cosine_similarity(vector1,vector1).mean() * 100
 
-        if counter > len(grain_matrix):
-            break
-        else:
-            counter +=1 
-    return ((sum(cosim_list) / len(cosim_list)) * 100) / average_file
+def cosine_different_topics(grain_matrix, crude_matrix):
 
+    vector1 = [i[1:] for i in grain_matrix]
+    vector2 = [i[1:] for i in crude_matrix]
+    return cosine_similarity(vector1,vector2).mean() * 100
+  
 def main(file):
-    args = parser.parse_args()
-    
+    #args = parser.parse_args()
     #data = import_dataframe(args.vectorfile)
-    data = import_dataframe(args.vectorfile)
+    data = import_dataframe(file)
     grain_matrix,crude_matrix = split_data(data)
-    #print(grain_matrix)
     grain_cosim_average = cos_sametopic(grain_matrix)
-    print(grain_cosim_average)
+    print(file)
+    print('\nThe grain files were all {}  similar to themselves'.format(grain_cosim_average))
     crude_cosim_average = cos_sametopic(crude_matrix)
-    print(crude_cosim_average)
-    crude_average_sim_different = cos_different(crude_matrix, grain_matrix, crude_cosim_average)
-    print(crude_average_sim_different)
-    grain_average_sim_different = cos_different(grain_matrix, crude_matrix, grain_cosim_average)
-    print(crude_average_sim_different)
-
+    print('The crude files were all {}  similar to themselves'.format(crude_cosim_average))
+    crude_average_sim_different = cosine_different_topics(crude_matrix, grain_matrix)
+    print('The topics were all {}  similar to eachother\n'.format(crude_average_sim_different))
+   
 if __name__ == '__main__':
-    files = ['vectorfileraw_top.csv','vectorfileraw_idf.csv','vectorfiletdidf_top.csv',
-            'vectorfiletruncatedm100.csv', 'vectorfiletruncated_m1000.csv', 'vectorfiletruncatedm100_tdidf.csv',
-            'vectorfiletruncated_m1000_tdidf.csv']
+    files = ['vectorfile_top20.csv','vectorfile_top100.csv','vectorfile_truncated_100.csv',
+    'vectorfileraw_tidf.csv', 'vectorfileraw_tdidf_top.csv', 'vectorfileraw.csv',
+    'vectorfiletruncated_m1000_tdidf.csv', 'vectorfiletruncated_m1000.csv', 'vectorfiletruncatedm100_tdidf.csv']
     
     for file in files:
         main(file)
-    '''
-    args = parser.parse_args()
-
-    data = import_dataframe(args.vectorfile)
-    grain_matrix,crude_matrix = split_data(data)
-    #print(grain_matrix)
-    grain_cosim_average = cos_sametopic(grain_matrix)
-    print(grain_cosim_average)
-    crude_cosim_average = cos_sametopic(crude_matrix)
-    print(crude_cosim_average)
-    crude_average_sim_different = cos_different(crude_matrix, grain_matrix, crude_cosim_average)
-    print(crude_average_sim_different)
-    grain_average_sim_different = cos_different(grain_matrix, crude_matrix, grain_cosim_average)
-    print(crude_average_sim_different)
-    '''
-    #total = cos_different(grain_matrix, crude_matrix)
-    #print(total)
-    '''
-    crude_mean = cosine_similarity([i[1:] for i in crude_matrix])
-    grain_mean = cosine_similarity([i[1:] for i in grain_matrix])
-    print(crude_mean.mean(), grain_mean.mean())
-    '''
-    
-    
-    
-    
-
-
-'''
-import simdoc as sim
-from sklearn.metrics.pairwise import cosine_similarity
-data = sim.import_dataframe('vectorfile.csv')
-grain_matrix,crude_matrix = sim.split_data(data)
-grain_cosim = sim.cos_sametopic(grain_matrix)
-
-print(array)
-grain_matrix,crude_matrix = sim.split_data(array)
-crude_mean = sim.cosine_similarity([i[1:] for i in crude_matrix])
-grain_ar = sim.cosine_similarity([i[1:] for i in grain_matrix])
-
-'''
+   

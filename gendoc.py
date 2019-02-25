@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import argparse, operator, os, numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer
@@ -242,4 +243,3 @@ data_frame = g.generate_dataframe(vectors,file_names)
 data = g.find_duplicates(data_frame)
 g.output_file(data, vocabulary, file_names)
 
-'''
