@@ -225,21 +225,4 @@ if __name__ == "__main__":
     main(top, n , tdidf, truncated, m, foldername)
 
     print(top,n,tdidf,truncated_svd,m,foldername)
-    
-'''
-
-import goo as g
-import pandas as pd
-foldername='reuters-topics'
-pd.set_option('display.max_rows', None)
-pd.set_option('display.max_columns', None)
-pd.set_option('display.width', None)
-lower = True
-top = True
-n = 20
-corpus, vocabulary = g.generate_corpus(foldername,top, n)
-vectors, file_names = g.generate_files(foldername, corpus,top, n)
-data_frame = g.generate_dataframe(vectors,file_names)
-data = g.find_duplicates(data_frame)
-g.output_file(data, vocabulary, file_names)
-
+ 
