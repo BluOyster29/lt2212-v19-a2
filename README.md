@@ -5,11 +5,11 @@
 
 <h2>Name: Robert Rhys Thomas</h2> 
 
-<h4>Additional instructions</h4>
+<h4>Additional instructions:</h4>
 <p>There are no additional instruction. Program runs as specified however the option to name the file has been removed
 as I have created filenames depending on what function has been operated on the file. For example if -B20 are accepted the file will be named 'vectorfile_top20' as the top20 words function will be applied</p>
 
-<h4>File naming convention</h4>
+<h4>File naming convention:</h4>
 All filenames are easily legible in the zip file however tf-idf might be referred to as td-idf, rest assured they are the same I just managed to put it in wrong for 3/4 of the programming and it would have been quite a challenge to correct it.
 
 <h4>Results:</h4>
@@ -35,8 +35,8 @@ All filenames are easily legible in the zip file however tf-idf might be referre
 <h4>Hypothesis:</h4>
 <p>This exercise has been an experiment to see what methods there are available to pass data from input to output and the effects that certain methods will have. We have learnt that we can not analys text files without preprocessing them, data can be lost when words with particular meaning or function are given the same weight as perhaps words that give more enlightening information about an input. For example in this assignment by removing stopwords, punctuation and applying tf-df we are given much relevant and reliable results.</p>
 
-Bonus answers
-*pending*
+<h5>Bonus answers</h5>
+<p>*pending*<p>
 
 <h4>Discussion of trends in results in light of the hypothesis:</h4>
 <p>The results certainly suggest that by using different statistical methods the result can vary somewhat. If we assume my calculations are correct we can see that the more functions that are used the greater the difference between the orginal raw count results and the statisticaly manipulated result. We can see that the more functions added the topics become less similar to themselves and less similar to the other topic. This is a rather strange result which either suggests there is a bug that I have missed or that the program is stripping away all the features that make the vectors recognisable as either crude or grain. </p>
