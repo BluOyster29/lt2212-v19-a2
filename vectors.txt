@@ -1,4 +1,0 @@
-                                                 0    ...                                                581
-0  [{'dutch': 6, 'grain': 5, 'levy': 8, 'test': 4...  ...  [{'usda': 1, 'reports': 1, 'corn': 5, 'switche...
-
-[1 rows x 582 columns]
