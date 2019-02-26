@@ -183,9 +183,9 @@ def truncated_svd(vectors, m,tdidf, vocabulary, filenames):
     return svd_data
 
 def output_file(data_frame_raw, vocabulary, file_names, top, tdidf, truncated_svd, m):
-   '''Function for outputting files, output file name changes depending on what 
+   
+    '''Function for outputting files, output file name changes depending on what 
     arguments are present'''
-
     if truncated_svd == False and tdidf == False and top == False:
         #one file containing a term-document matrix with no vocabulary restriction and no other transformations.
         #python3 gendoc.py reuters-topics
